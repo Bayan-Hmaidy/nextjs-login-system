@@ -1,5 +1,6 @@
 "use client";
 
+import '@/app/globals.css'
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import axios from "axios";
@@ -27,43 +28,60 @@ export default function Signup() {
   };
 
   return (
-    <div>
-      <h1>Signup Form</h1>
-      <form
-        onSubmit={(e) => {
-          onSignup(e);
-        }}
-      >
-        <label htmlFor="username">Username</label>
+    <div className="bg-gray-100 p-8 rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold mb-4">Signup Form</h1>
+      <form onSubmit={onSignup}>
+        <label className="block text-gray-700" htmlFor="username">
+          Username
+        </label>
         <input
+          className="border rounded-md px-3 py-2 mb-3 w-full"
           required
           type="text"
           id="username"
-          placeholder="username"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="email">Email</label>
+
+        <label className="block text-gray-700" htmlFor="email">
+          Email
+        </label>
         <input
+          className="border rounded-md px-3 py-2 mb-3 w-full"
           required
           type="email"
           id="email"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+
+        <label className="block text-gray-700" htmlFor="password">
+          Password
+        </label>
         <input
+          className="border rounded-md px-3 py-2 mb-3 w-full"
           required
           type="password"
           id="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Signup</button>
-        <p>
-          Already have an account? <a href="/login">Login</a>
+
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
+          type="submit"
+        >
+          Signup
+        </button>
+
+        <p className="mt-3">
+          Already have an account?{" "}
+          <a className="text-blue-500" href="/login">
+            Login
+          </a>
         </p>
       </form>
     </div>

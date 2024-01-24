@@ -1,5 +1,6 @@
 "use client";
 
+import '@/app/globals.css'
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -14,7 +15,7 @@ export default function Account() {
 
   const onLogout = async () => {
     await axios("/api/logout");
-    router.push('/login')
+    router.push("/login");
   };
 
   const getUserData = async () => {
@@ -28,11 +29,16 @@ export default function Account() {
   };
 
   return (
-    <div>
-      <h1>Account Page</h1>
-      <h2>Hello {data.username}</h2>
-      <p>email: {data.email}</p>
-      <button onClick={onLogout}>Log out</button>
+    <div className="bg-gray-100 p-8 rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold mb-4">Account Page</h1>
+      <h2 className="text-xl mb-2">Hello {data.username}</h2>
+      <p className="text-gray-600 mb-4">Email: {data.email}</p>
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
+        onClick={onLogout}
+      >
+        Log out
+      </button>
     </div>
   );
 }
